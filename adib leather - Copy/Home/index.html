@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../logo/logo white.jpg">
+    <meta name="description" content="به دنیایی از کیفای چرمی خوش اومدین!">
+    <title>Adib Leather</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+   <style>
+    
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        body {
+            background-color: #f8f4e9;
+            color: #5D4037;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header and Navbar Styles */
+        header {
+            background: linear-gradient(to right, #5D4037, #3E2723);
+            color: #D2B48C;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+            border: 2px solid #D2B48C;
+            margin-top: 10px;
+        }
+
+        .logo a{
+            font-family: 'Lalezar', cursive;
+            font-size: 1.8rem;
+            color: #f8f0e3;
+            padding-right:10px;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 20px 10px 45px;
+            border-radius: 30px;
+            border: none;
+            background: rgba(255, 255, 255, 0.15);
+            color: #f8f0e3;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input::placeholder {
+            color: #D2B48C;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 10px rgba(210, 180, 140, 0.5);
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #D2B48C;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item {
+            margin: 0 10px;
+            position: relative;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .nav-item i {
+            display: block;
+            margin-bottom: 2px;
+            font-size: 1.2rem;
+        }
+
+        .nav-item span {
+            font-size: 0.9rem;
+        }
+
+        .nav-item:hover {
+            color: #f8f0e3;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            min-width: 200px;
+            display: none;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .dropdown.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: #5D4037;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown a:hover {
+            background: #f8f4e9;
+            color: #3E2723;
+            padding-right: 25px;
+        }
+
+        .dropdown a:last-child {
+            border-bottom: none;
+        }
+
+        .cart-dropdown {
+            right: -50px;
+        }
+
+        /* Hero Slider Styles */
+        .hero {
+            margin-top: 80px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to left, rgba(0,0,0,0.7), transparent);
+        }
+
+        .slide-content {
+            position: relative;
+            color: #fff;
+            max-width: 50%;
+            padding: 30px;
+            z-index: 2;
+            text-align: right;
+        }
+
+        .slide-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-family: 'Lalezar', cursive;
+            color: #D2B48C;
+        }
+
+        .slide-content p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(to right, #8B4513, #A0522D);
+            color: #f8f0e3;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .slider-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+
+        .control-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 0 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .control-btn.active {
+            background: #D2B48C;
+            transform: scale(1.2);
+        }
+
+        /* Categories Section */
+        .section {
+            padding: 80px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-family: 'Lalezar', cursive;
+            font-size: 2rem;
+            color: #3E2723;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #8B4513, #D2B48C);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .category-content {
+            padding: 20px;
+        }
+
+        .category-content h3 {
+            margin-bottom: 10px;
+            color: #3E2723;
+        }
+
+        /* Products Section */
+        .products {
+            background: #f1e9d9;
+            padding: 80px 5%;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #D2B48C;
+            color: #3E2723;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .product-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #3E2723;
+        }
+
+        .product-price {
+            color: #8B4513;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .product-rating {
+            color: #D2B48C;
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #5D4037;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background: #3E2723;
+        }
+
+        /* Banner Section */
+        .banner {
+            padding: 0 5%;
+            margin-bottom: 80px;
+        }
+
+        .banner-container {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .banner-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-family: 'Lalezar', cursive;
+        }
+
+        .banner-content p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 5%;
+            background: #f1e9d9;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 5rem;
+            color: #D2B48C;
+            opacity: 0.2;
+            font-family: Arial;
+        }
+
+        .testimonial-content {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            margin-left: 15px;
+            border: 2px solid #D2B48C;
+        }
+
+        .author-info h4 {
+            color: #3E2723;
+            margin-bottom: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, #5D4037, #3E2723);
+            color: #f8f0e3;
+            padding: 60px 5% 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto 50px;
+        }
+
+        .footer-column h3 {
+            font-family: 'Lalezar', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: #D2B48C;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #D2B48C;
+            margin-top: 10px;
+            border-radius: 2px;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #D2B48C;
+            padding-right: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #D2B48C;
+            color: #3E2723;
+            transform: translateY(-5px);
+        }
+
+        .contact-info li {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            margin-left: 10px;
+            color: #D2B48C;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #a78a7f;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .slide-content {
+                max-width: 70%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+            }
+
+            .logo {
+                order: 1;
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 15px;
+            }
+
+            .search-bar {
+                order: 3;
+                max-width: 100%;
+                margin: 15px 0;
+            }
+
+            .nav-links {
+                order: 2;
+                width: auto;
+                margin: 0 auto;
+            }
+
+            .hero {
+                height: 400px;
+            }
+
+            .slide-content {
+                max-width: 90%;
+            }
+
+            .slide-content h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .nav-item {
+                margin: 0 5px;
+            }
+
+            .nav-item span {
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                height: 350px;
+            }
+
+            .slide-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .banner-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+    
+   </style>
+</head>
+<body>
+    <!-- Header & Navbar -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="homev1.html">
+                <img src="../logo/no back.png" alt="Logo">
+                </a>
+                <h1><a href="homev1.html">چرم ادیب</a></h1>
+            </div>
+
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="جستجوی محصولات...">
+            </div>
+
+            <div class="nav-links">
+                <div class="nav-item" id="user-dropdown-trigger">
+                    <i class="fas fa-user"></i>
+                    <span>ورود/ثبت‌نام</span>
+                    <div class="dropdown" id="user-dropdown">
+                        <a href="../sign in/sginin.html"><i class="fas fa-sign-in-alt"></i> ورود به حساب</a>
+                        <a href="../profile/profile.html"><i class="fas fa-user-plus"></i>ویرایش پروفایل</a>
+                        <a href="#" style="color: red;"><i class="fas fa-sign-out-alt" ></i> خروج</a>
+                    </div>
+                </div>
+
+                <div class="nav-item" id="cart-dropdown-trigger">
+                        <i class="fas fa-shopping-cart"></i>
+                    <span>سبد خرید</span>
+                    <div class="dropdown cart-dropdown" id="cart-dropdown">
+                        <a href="#"><i class="fas fa-shopping-bag"></i>کالای 1</a>
+                        <a href="#"><i class="fas fa-shopping-bag"></i> کالای 2</a>
+                        <a href="#"><i class="fas fa-shopping-bag"></i> کالای 3</a>
+                        <a href="#"><i class="fas fa-shopping-bag"></i> کالای 4</a>
+                        <a href="../shop/shop.html" style="background: #D2B48C; color: #3E2723; text-align: center; font-weight: bold;">مشاهده سبد خرید</a>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <a href="../product/prd.html">
+                        <i class="fas fa-list"></i>
+                        <span>لیست محصولات</span>
+                    </a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="../contact us/contact.html">
+                        <i class="fas fa-info-circle"></i>
+                        <span>درباره ما</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <section class="hero">
+        <div class="slides">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1601924994987-69e26d50dc26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                <div class="slide-content">
+                    <h2>تخفیف‌های ویژه</h2>
+                    <p>فرصت استثنایی! تا 50% تخفیف روی محصولات منتخب چرمی</p>
+                    <a href="#" class="btn">مشاهده تخفیف‌ها</a>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                <div class="slide-content">
+                    <h2>پرفروش‌ترین‌ها</h2>
+                    <p>محبوب‌ترین محصولات چرمی با کیفیت عالی و قیمت مناسب</p>
+                    <a href="#" class="btn">مشاهده محصولات</a>
+                </div>
+            </div>
+        </div>
+        <div class="slider-controls">
+            <div class="control-btn active"></div>
+            <div class="control-btn"></div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section">
+        <h2 class="section-title">دسته‌بندی محصولات</h2>
+        <div class="categories">
+            <div class="category-card">
+                <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1548036328-c9fa89d128fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80');"></div>
+                <div class="category-content">
+                    <h3>کیف‌های دستی</h3>
+                    <a href="../product/prd.html">مشاهده محصولات</a>
+                </div>
+            </div>
+            <div class="category-card">
+                <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80');"></div>
+                <div class="category-content">
+                    <h3>کیف های دوشی</h3>
+                    <a href="../product/prd.html">مشاهده محصولات</a>
+                </div>
+            </div>
+            <div class="category-card">
+                <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80');"></div>
+                <div class="category-content">
+                    <h3>کمربند</h3>
+                    <a href="../product/prd.html">مشاهده محصولات</a>
+                </div>
+            </div>
+            <div class="category-card">
+                <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                <div class="category-content">
+                    <h3>اکسسوری</h3>
+                    <a href="../product/prd.html">مشاهده محصولات</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="section">
+            <h2 class="section-title">محصولات ویژه</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-badge">جدید</div>
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1548036328-c9fa89d128fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80');"></div>
+                    <div class="product-content">
+                        <a href="#" class="product-title"><h3>کیف دستی چرم طبیعی</h3></a>
+                        <div class="product-price">1,290,000 تومان</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <button class="add-to-cart">افزودن به سبد خرید</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-badge">پرفروش</div>
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80');"></div>
+                    <div class="product-content">
+                        <a href="#" class="product-title"> <h3>کیف های دوشی </h3></a>
+                        <div class="product-price">890,000 تومان</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <button class="add-to-cart">افزودن به سبد خرید</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-badge">تخفیف ویژه</div>
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                    <div class="product-content">
+                        <a href="#" class="product-title"><h3>دستبند چرمی دست‌دوز </h3></a>
+                        <div class="product-price">290,000 تومان</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <button class="add-to-cart">افزودن به سبد خرید</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1617137968427-85924c800a22?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');"></div>
+                    <div class="product-content">
+                        <a href="#" class="product-title"><h3>کیف پول چرم مردانه </h3></a>
+                        <div class="product-price">450,000 تومان</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <button class="add-to-cart">افزودن به سبد خرید</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Section -->
+    <section class="banner">
+        <div class="banner-container">
+            <div class="banner-content">
+                <h2>ارسال رایگان برای خریدهای بالای 1 میلیون تومان</h2>
+                <p>با خرید از فروشگاه چرم‌ ادیب از کیفیت و اصالت محصولات اطمینان داشته باشید !</p>
+                <a href="../product/prd.html" class="btn">همین حالا خرید کنید</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section">
+            <h2 class="section-title">نظرات مشتریان</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>کیف دستی که خریدم واقعاً عالی بود. کیفیت چرم و دوختش حرف نداره. ممنون از فروشگاه خوبتون</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80');"></div>
+                        <div class="author-info">
+                            <h4>محمد حسینی</h4>
+                            <p>مشتری ثابت</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>کیف های دوشی که از این فروشگاه خریدم بسیار باکیفیت و راحت هست. به همه دوستانم این فروشگاه رو معرفی کردم.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img" style="background-image: url('https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');"></div>
+                        <div class="author-info">
+                            <h4>فاطمه احمدی</h4>
+                            <p>مشتری جدید</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>خرید از فروشگاه چرم‌آرا رو به همه پیشنهاد می‌کنم. قیمت‌ها مناسب و کیفیت محصولات عالیه. پشتیبانی هم خیلی خوبه.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img" style="background-image: url('https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1398&q=80');"></div>
+                        <div class="author-info">
+                            <h4>علی رضایی</h4>
+                            <p>مشتری وفادار</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>درباره ما</h3>
+                <p>فروشگاه چرم‌ ادیب با بیش از 7 سال سابقه در زمینه تولید و فروش محصولات چرمی باکیفیت، همواره تلاش کرده تا بهترین محصولات را با مناسب‌ترین قیمت‌ها به مشتریان ارائه دهد.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fa fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>لینک‌های مفید</h3>
+                <ul class="footer-links">
+                    <li><a href="../Home/homev1.html">صفحه اصلی</a></li>
+                    <li><a href="../sign in/sginin.html">ورود/ثبت نام</a></li>
+                    <li><a href="../product/prd.html">محصولات</a></li>
+                    <li><a href="../contact us/contact.html">درباره ما</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>دسته‌بندی محصولات</h3>
+                <ul class="footer-links">
+                    <li><a href="../product/prd.html">کیف‌های دستی</a></li>
+                    <li><a href="../product/prd.html">کفش چرمی</a></li>
+                    <li><a href="../product/prd.html">کیف های دوشی</a></li>
+                    <li><a href="../product/prd.html">اکسسوری</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>تماس با ما</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> ایران، تهران، شهر جدید پرند، شهرک افتاب، خیابان محلاتی، بلوک c.19.</li>
+                    <li><i class="fas fa-phone"></i> 021-56952048</li>
+                    <li><i class="fas fa-envelope"></i> adib_leather@gmail.com</li>
+                    <li><i class="fas fa-clock"></i> شنبه تا پنجشنبه: 9 صبح تا 8 شب</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2023 فروشگاه محصولات چرمی چرم ادیب. تمامی حقوق محفوظ است.
+        </div>
+    </footer>
+<script>
+    
+        // Dropdown Toggle
+        const userDropdownTrigger = document.getElementById('user-dropdown-trigger');
+        const userDropdown = document.getElementById('user-dropdown');
+        const cartDropdownTrigger = document.getElementById('cart-dropdown-trigger');
+        const cartDropdown = document.getElementById('cart-dropdown');
+
+        userDropdownTrigger.addEventListener('click', () => {
+            userDropdown.classList.toggle('active');
+            cartDropdown.classList.remove('active');
+        });
+
+        cartDropdownTrigger.addEventListener('click', () => {
+            cartDropdown.classList.toggle('active');
+            userDropdown.classList.remove('active');
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!userDropdownTrigger.contains(e.target)) {
+                userDropdown.classList.remove('active');
+            }
+            if (!cartDropdownTrigger.contains(e.target)) {
+                cartDropdown.classList.remove('active');
+            }
+        });
+
+        // Hero Slider
+        const slides = document.querySelector('.slides');
+        const slideItems = document.querySelectorAll('.slide');
+        const controlBtns = document.querySelectorAll('.control-btn');
+        let currentSlide = 0;
+        const slideCount = slideItems.length;
+
+        function goToSlide(index) {
+            slides.style.transform = `translateX(-${index * 100}%)`;
+            controlBtns.forEach(btn => btn.classList.remove('active'));
+            controlBtns[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        controlBtns.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                goToSlide(index);
+            });
+        });
+
+        // Auto slide
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slideCount;
+            goToSlide(currentSlide);
+        }, 5000);
+
+        // Initialize first slide
+        goToSlide(0);
+   
+</script>
+   
+</body>
+</html>

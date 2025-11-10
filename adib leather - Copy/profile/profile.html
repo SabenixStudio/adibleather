@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../logo/logo white.jpg">
+    <title>ویرایش اطلاعات</title>    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">   
+</head>
+<style>
+     
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        body {
+            background-color: #f8f4e9;
+            color: #5D4037;
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+          a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+
+         header {
+            background: linear-gradient(to right, #5D4037, #3E2723);
+            color: #D2B48C;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+            border: 2px solid #D2B48C;
+            margin-top: 10px;
+        }
+
+        .logo a{
+            font-family: 'Lalezar', cursive;
+            font-size: 1.8rem;
+            color: #f8f0e3;
+            padding-right:10px;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 20px 10px 45px;
+            border-radius: 30px;
+            border: none;
+            background: rgba(255, 255, 255, 0.15);
+            color: #f8f0e3;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input::placeholder {
+            color: #D2B48C;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 10px rgba(210, 180, 140, 0.5);
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #D2B48C;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item {
+            margin: 0 10px;
+            position: relative;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .nav-item i {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .nav-item span {
+            font-size: 0.9rem;
+        }
+
+        .nav-item:hover {
+            color: #f8f0e3;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            min-width: 200px;
+            display: none;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .dropdown.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: #5D4037;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown a:hover {
+            background: #f8f4e9;
+            color: #3E2723;
+            padding-right: 25px;
+        }
+
+        .dropdown a:last-child {
+            border-bottom: none;
+        }
+
+        .cart-dropdown {
+            right: -50px;
+        }
+        
+        /* Profile Page Styles */
+        .profile-section {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .profile-header h2 {
+            font-family: 'Lalezar', cursive;
+            font-size: 2.5rem;
+            color: #3E2723;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-header h2::after {
+            content: '';
+            display: block;
+            width: 70%;
+            height: 3px;
+            background: linear-gradient(to right, #8B4513, #D2B48C);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 30px;
+        }
+
+        .profile-sidebar {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            padding: 20px;
+            border-right: 2px dashed #D2B48C;
+        }
+
+        .profile-avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid #D2B48C;
+            margin: 0 auto 25px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-edit {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(139, 69, 19, 0.8);
+            color: #fff;
+            padding: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .avatar-edit:hover {
+            background: rgba(94, 38, 18, 0.9);
+        }
+
+        .profile-info {
+            margin-top: 30px;
+        }
+
+        .profile-info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profile-info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #5D4037;
+            font-weight: 600;
+        }
+
+        .info-value {
+            color: #8B4513;
+        }
+
+        .profile-content {
+            flex: 2;
+            min-width: 400px;
+        }
+
+        .profile-form {
+            padding: 20px;
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            color: #3E2723;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #D2B48C;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #5D4037;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 20px;
+            border: 1px solid #d7c1a9;
+            border-radius: 10px;
+            background: #fcf8f0;
+            font-size: 1rem;
+            color: #5D4037;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #D2B48C;
+            box-shadow: 0 0 0 3px rgba(210, 180, 140, 0.3);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .form-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 8px;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .radio-label input {
+            margin-left: 8px;
+            accent-color: #8B4513;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background: linear-gradient(to right, #8B4513, #A0522D);
+            color: #f8f0e3;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(to right, #7a3b10, #8d4525);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #8B4513;
+            color: #8B4513;
+            margin-right: 15px;
+        }
+
+        .btn-outline:hover {
+            background: rgba(139, 69, 19, 0.1);
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 30px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, #5D4037, #3E2723);
+            color: #f8f0e3;
+            padding: 60px 5% 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto 50px;
+        }
+
+        .footer-column h3 {
+            font-family: 'Lalezar', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: #D2B48C;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #D2B48C;
+            margin-top: 10px;
+            border-radius: 2px;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #D2B48C;
+            padding-right: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #D2B48C;
+            color: #3E2723;
+            transform: translateY(-5px);
+        }
+
+        .contact-info li {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            margin-left: 10px;
+            color: #D2B48C;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #a78a7f;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .profile-container {
+                flex-direction: column;
+            }
+            
+            .profile-sidebar {
+                border-right: none;
+                border-bottom: 2px dashed #D2B48C;
+                padding-bottom: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+            }
+
+            .logo {
+                order: 1;
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 15px;
+            }
+
+            .search-bar {
+                order: 3;
+                max-width: 100%;
+                margin: 15px 0;
+            }
+
+            .nav-links {
+                order: 2;
+                width: auto;
+                margin: 0 auto;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .form-actions {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .nav-item {
+                margin: 0 5px;
+            }
+
+            .nav-item span {
+                font-size: 0.8rem;
+            }
+            
+            .profile-header h2 {
+                font-size: 2rem;
+            }
+        }
+</style>
+<body>
+    <!-- Header & Navbar -->
+   <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="../Home/homev1.html">
+                <img src="../logo/no back.png" alt="Logo">
+                </a>
+                <h1><a href="homev1.html">چرم ادیب</a></h1>
+            </div>
+
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="جستجوی محصولات...">
+            </div>
+
+            <div class="nav-links">
+                <div class="nav-item" id="user-dropdown-trigger">
+                    <i class="fa-solid fa-house-chimney"></i>
+                    <span>صفحه اصلی</span>
+                    <div class="dropdown" id="user-dropdown">
+                        <a href="../Home/homev1.html"><i class="fa-solid fa-house-chimney"></i> صفحه اصلی</a>
+                        <a href="#"style="color: red;"><i class="fas fa-sign-out-alt" ></i> خروج</a>
+                    </div>
+                </div>
+
+                <div class="nav-item" id="cart-dropdown-trigger">
+                        <i class="fas fa-shopping-cart"></i>
+
+
+                    <span>سبد خرید</span>
+                    <div class="dropdown cart-dropdown" id="cart-dropdown">
+                        <a href="#"><i class="fas fa-shopping-bag"></i>کالای 1</a>
+                        <a href="#"><i class="fas fa-shopping-bag"></i> کالای 2</a>
+                        <a href="#"><i class="fas fa-shopping-bag"></i> کالای 3</a>
+                        <a href="#"><i class="fas fa-shopping-bag"></i> کالای 4</a>
+                        <a href="../shop/shop.html" style="background: #D2B48C; color: #3E2723; text-align: center; font-weight: bold;">مشاهده سبد خرید</a>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <a href="../product/prd.html">
+                        <i class="fas fa-list"></i>
+
+                        <span>لیست محصولات</span>
+                    </a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="../contact us/contact.html">
+                        <i class="fas fa-info-circle"></i>
+                        <span>درباره ما</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Profile Section -->
+    <section class="profile-section">
+        <div class="profile-header">
+            <h2>ویرایش پروفایل</h2>
+            <p>اطلاعات شخصی خود را به روزرسانی کنید</p>
+        </div>
+        
+        <div class="profile-container">
+            <div class="profile-sidebar">
+                <div class="profile-avatar">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80" alt="پروفایل">
+                    <div class="avatar-edit">
+                        <i class="fas fa-camera"></i> تغییر عکس
+                    </div>
+                </div>
+                
+                <div class="profile-info">
+                    <div class="profile-info-item">
+                        <span class="info-label">عضویت از:</span>
+                        <span class="info-value">۱۴۰۲/۰۳/۱۵</span>
+                    </div>
+                    <div class="profile-info-item">
+                        <span class="info-label">تعداد سفارشات:</span>
+                        <span class="info-value">۱۲ سفارش</span>
+                    </div>
+                    <div class="profile-info-item">
+                        <span class="info-label">آخرین بازدید:</span>
+                        <span class="info-value">۲ روز پیش</span>
+                    </div>
+                    <div class="profile-info-item">
+                        <span class="info-label">وضعیت حساب:</span>
+                        <span class="info-value" style="color: #27ae60;">فعال</span>
+                        <span class="info-value" style="color: #d93434;">غیر فعال </span>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-content">
+                <div class="profile-form">
+                    <h3 class="form-title">اطلاعات شخصی</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="fullname">نام کامل</label>
+                                <input type="text" id="fullname" class="form-control" placeholder=" نام و نام خانوادگی">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="email">ایمیل</label>
+                                <input type="email" id="email" class="form-control" placeholder="example@example.com">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="phone">شماره تلفن</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="۰۹۱۲۳۴۵۶۷۸۹">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label>جنسیت</label>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="gender" value="male" checked>
+                                        آقا
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="gender" value="female">
+                                        خانم
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="birthdate">تاریخ تولد</label>
+                        <input type="date" id="birthdate" class="form-control" placeholder="1375-05-20">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">آدرس کامل</label>
+                        <textarea id="address" class="form-control" rows="4" placeholder="تهران، خیابان انقلاب، پلاک ۱۲۳، طبقه ۴، واحد ۸"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bio">درباره من</label>
+                        <textarea id="bio" class="form-control" rows="3" placeholder="علاقمند به محصولات چرمی باکیفیت و طراحی‌های منحصر به فرد"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="interests">علایق خرید</label>
+                        <input type="text" id="interests" class="form-control" placeholder="کیف دستی, کفش چرمی, اکسسوری">
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button class="btn btn-outline">انصراف</button>
+                        <button class="btn">ذخیره تغییرات</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>درباره ما</h3>
+                <p>فروشگاه چرم‌ ادیب با بیش از 7 سال سابقه در زمینه تولید و فروش محصولات چرمی باکیفیت، همواره تلاش کرده تا بهترین محصولات را با مناسب‌ترین قیمت‌ها به مشتریان ارائه دهد.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fa fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>لینک‌های مفید</h3>
+                <ul class="footer-links">
+                    <li><a href="../Home/homev1.html">صفحه اصلی</a></li>
+                    <li><a href="../sign in/sginin.html">ورود/ثبت نام</a></li>
+                    <li><a href="../product/prd.html">محصولات</a></li>
+                    <li><a href="../contact us/contact.html">درباره ما</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>دسته‌بندی محصولات</h3>
+                <ul class="footer-links">
+                    <li><a href="../product/prd.html">کیف‌های دستی</a></li>
+                    <li><a href="../product/prd.html">کفش چرمی</a></li>
+                    <li><a href="../product/prd.html">کمربند</a></li>
+                    <li><a href="../product/prd.html">اکسسوری</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>تماس با ما</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> ایران، تهران، شهر جدید پرند، شهرک افتاب، خیابان محلاتی، بلوک c.19.</li>
+                    <li><i class="fas fa-phone"></i> 021-56952048</li>
+                    <li><i class="fas fa-envelope"></i> adib_leather@gmail.com</li>
+                    <li><i class="fas fa-clock"></i> شنبه تا پنجشنبه: 9 صبح تا 8 شب</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2023 فروشگاه محصولات چرمی چرم ادیب. تمامی حقوق محفوظ است.
+        </div>
+    </footer>
+
+
+    <script>
+ const userDropdownTrigger = document.getElementById('user-dropdown-trigger');
+        const userDropdown = document.getElementById('user-dropdown');
+        const cartDropdownTrigger = document.getElementById('cart-dropdown-trigger');
+        const cartDropdown = document.getElementById('cart-dropdown');
+
+        userDropdownTrigger.addEventListener('click', () => {
+            userDropdown.classList.toggle('active');
+            cartDropdown.classList.remove('active');
+        });
+
+        cartDropdownTrigger.addEventListener('click', () => {
+            cartDropdown.classList.toggle('active');
+            userDropdown.classList.remove('active');
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!userDropdownTrigger.contains(e.target)) {
+                userDropdown.classList.remove('active');
+            }
+            if (!cartDropdownTrigger.contains(e.target)) {
+                cartDropdown.classList.remove('active');
+            }
+        });
+        
+        // Profile picture edit
+        const avatarEdit = document.querySelector('.avatar-edit');
+        avatarEdit.addEventListener('click', function() {
+            alert('آپلود عکس پروفایل جدید');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../logo/logo white.jpg">
+    <meta name="description" content="به دنیایی از کیفای چرمی خوش اومدین!">
+    <title>سبد خرید</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+    
+</head>
+<style>
+            * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f4ee;
+            color: #4a2e1a;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* هدر */
+       a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header and Navbar Styles */
+        header {
+            background: linear-gradient(to right, #5D4037, #3E2723);
+            color: #D2B48C;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+            border: 2px solid #D2B48C;
+            margin-top: 10px;
+        }
+
+        .logo a{
+            font-family: 'Lalezar', cursive;
+            font-size: 1.8rem;
+            color: #f8f0e3;
+            padding-right:10px;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 20px 10px 45px;
+            border-radius: 30px;
+            border: none;
+            background: rgba(255, 255, 255, 0.15);
+            color: #f8f0e3;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input::placeholder {
+            color: #D2B48C;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 10px rgba(210, 180, 140, 0.5);
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #D2B48C;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item {
+            margin: 0 10px;
+            position: relative;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .nav-item i {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .nav-item span {
+            font-size: 0.9rem;
+        }
+
+        .nav-item:hover {
+            color: #f8f0e3;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            min-width: 200px;
+            display: none;
+            z-index: 100;
+            overflow: hidden;
+            
+        }
+
+        .dropdown.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+            
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: #5D4037;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown a:hover {
+            background: #f8f4e9;
+            color: #3E2723;
+            padding-right: 25px;
+        }
+
+        .dropdown a:last-child {
+            border-bottom: none;
+        }
+
+        .cart-dropdown {
+            right: -50px;
+           
+        }
+        
+        /* صفحه اصلی سبد خرید */
+        .cart-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 50px;
+            margin-top: 100px;
+        }
+        
+        .cart-items {
+            flex: 2;
+            min-width: 300px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(107, 79, 60, 0.1);
+            padding: 25px;
+            border-top: 4px solid #8c6239;
+        }
+        
+        .cart-summary {
+            flex: 1;
+            min-width: 300px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(107, 79, 60, 0.1);
+            padding: 25px;
+            border-top: 4px solid #8c6239;
+            align-self: flex-start;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d8c3;
+        }
+        
+        .cart-header h2 {
+            font-size: 28px;
+            color: #4a2e1a;
+        }
+        
+        .cart-item {
+            display: flex;
+            padding: 20px 0;
+            border-bottom: 1px solid #e8d8c3;
+            overflow: hidden;
+            overflow-y: scroll;
+
+        }
+        
+        .item-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-left: 20px;
+            flex-shrink: 0;
+        }
+        
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .item-details {
+            flex-grow: 1;
+        }
+        
+        .item-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #4a2e1a;
+        }
+        
+        .item-price {
+            font-size: 18px;
+            color: #8c6239;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .item-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            border: 1px solid #d4a76a;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .quantity-btn {
+            background-color: #f1e9e0;
+            border: none;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #6b4f3c;
+            transition: background-color 0.3s;
+        }
+        
+        .quantity-btn:hover {
+            background-color: #e8d8c3;
+        }
+        
+        .quantity-input {
+            width: 50px;
+            height: 36px;
+            text-align: center;
+            border: none;
+            border-left: 1px solid #d4a76a;
+            border-right: 1px solid #d4a76a;
+            background-color: #fff;
+            font-size: 16px;
+        }
+        
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #a52a2a;
+            cursor: pointer;
+            font-size: 16px;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .remove-btn:hover {
+            color: #d32f2f;
+        }
+        
+        .summary-title {
+            font-size: 24px;
+            color: #4a2e1a;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .summary-details {
+            margin-bottom: 25px;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dashed #e8d8c3;
+        }
+        
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px 0;
+            border-top: 2px solid #d4a76a;
+            border-bottom: 2px solid #d4a76a;
+            color: #4a2e1a;
+        }
+        
+        .coupon-section {
+            margin: 25px 0;
+        }
+        
+        .coupon-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .coupon-input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: 1px solid #d4a76a;
+            border-radius: 6px;
+            background-color: #f8f4ee;
+            font-size: 16px;
+        }
+        
+        .coupon-btn {
+            background-color: #d4a76a;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .coupon-btn:hover {
+            background-color: #b38d58;
+        }
+        
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #8c6239 0%, #6b4f3c 100%);
+            color: white;
+            border: none;
+            padding: 16px;
+            font-size: 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        
+        .checkout-btn:hover {
+            background: linear-gradient(135deg, #9d744b 0%, #7c604d 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(107, 79, 60, 0.3);
+        }
+        
+        .continue-shopping {
+            display: inline-block;
+            margin-top: 15px;
+            color: #8c6239;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .continue-shopping:hover {
+            color: #6b4f3c;
+            text-decoration: underline;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        
+        .empty-cart i {
+            font-size: 64px;
+            color: #d4a76a;
+            margin-bottom: 20px;
+        }
+        
+        .empty-cart h3 {
+            font-size: 28px;
+            color: #4a2e1a;
+            margin-bottom: 15px;
+        }
+        
+        .empty-cart p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #6b4f3c;
+        }
+        
+        /* فوتر */
+        footer {
+            background: linear-gradient(to right, #5D4037, #3E2723);
+            color: #f8f0e3;
+            padding: 60px 5% 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto 50px;
+        }
+
+        .footer-column h3 {
+            font-family: 'Lalezar', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: #D2B48C;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #D2B48C;
+            margin-top: 10px;
+            border-radius: 2px;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #D2B48C;
+            padding-right: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #D2B48C;
+            color: #3E2723;
+            transform: translateY(-5px);
+        }
+
+        .contact-info li {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            margin-left: 10px;
+            color: #D2B48C;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #a78a7f;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .cart-item {
+                flex-direction: column;
+            }
+            
+            .item-image {
+                margin-left: 0;
+                margin-bottom: 15px;
+            }
+            
+            .cart-header h2 {
+                font-size: 22px;
+            }
+        }
+
+</style>
+<body>
+    <!-- هدر -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="../Home/homev1.html">
+                <img src="../logo/no back.png" alt="Logo">
+                </a>
+                <h1><a href="../Home/homev1.html">چرم ادیب</a></h1>
+            </div>
+
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="جستجوی محصولات...">
+            </div>
+
+            <div class="nav-links">
+                <div class="nav-item" id="user-dropdown-trigger">
+                    <i class="fas fa-user"></i>
+                    <span>ورود/ثبت‌نام</span>
+                    <div class="dropdown" id="user-dropdown">
+                        <a href="../sign in/sginin.html"><i class="fas fa-sign-in-alt"></i> ورود به حساب</a>
+                        <a href="../profile/profile.html"><i class="fas fa-user-plus"></i>ویرایش پروفایل</a>
+                        <a href="#"style="color: red;"><i class="fas fa-sign-out-alt" ></i> خروج</a>
+                    </div>
+                </div>
+
+                <div class="nav-item" id="cart-dropdown-trigger">
+                        <i class="fas fa-shopping-cart" style="color: #deaa47;"></i>
+
+
+                    <span style="color:#deaa47;">سبد خرید</span>
+                    <div class="dropdown cart-dropdown" id="cart-dropdown" >
+                        <a href="#"><i class="fas fa-shopping-bag"></i>کالای 1</a>
+                        <a href="#"><i class="fas fa-shopping-bag"></i> کالای 2</a>
+                        <a href="#"><i class="fas fa-shopping-bag"></i> کالای 3</a>
+                        <a href="#"><i class="fas fa-shopping-bag"></i> کالای 4</a>
+                        <a href="#" style="background: #D2B48C; color: #3E2723; text-align: center; font-weight: bold;">مشاهده سبد خرید</a>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <a href="../product/prd.html">
+                        <i class="fas fa-list"></i>
+
+                        <span>لیست محصولات</span>
+                    </a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="../contact us/contact.html">
+                        <i class="fas fa-info-circle"></i>
+                        <span>درباره ما</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="cart-container">
+            <div class="cart-items">
+                <div class="cart-header">
+                    <h2>سبد خرید شما</h2>
+                    <span>3 کالا</span>
+                </div>
+                
+                <div class="cart-item">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1548032885-b5e38734688a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="کیف چرمی زنانه">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-name">کیف دستی زنانه چرم طبیعی</div>
+                        <div class="item-price">1,290,000 تومان</div>
+                        <div class="item-actions">
+                            <div class="quantity-control">
+                                <button class="quantity-btn minus">-</button>
+                                <input type="text" class="quantity-input" value="1" readonly>
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                            <button class="remove-btn">
+                                <i class="fas fa-trash"></i>
+                                حذف
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cart-item">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1605733513597-a8f8341084e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="کیف پول چرمی مردانه">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-name">کیف پول چرم مردانه طرح کلاسیک</div>
+                        <div class="item-price">680,000 تومان</div>
+                        <div class="item-actions">
+                            <div class="quantity-control">
+                                <button class="quantity-btn minus">-</button>
+                                <input type="text" class="quantity-input" value="1" readonly>
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                            <button class="remove-btn">
+                                <i class="fas fa-trash"></i>
+                                حذف
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cart-item">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="کمربند چرمی">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-name">کمربند چرم مردانه طرح مدرن</div>
+                        <div class="item-price">420,000 تومان</div>
+                        <div class="item-actions">
+                            <div class="quantity-control">
+                                <button class="quantity-btn minus">-</button>
+                                <input type="text" class="quantity-input" value="2" readonly>
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                            <button class="remove-btn">
+                                <i class="fas fa-trash"></i>
+                                حذف
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cart-summary">
+                <h3 class="summary-title">خلاصه سفارش</h3>
+                
+                <div class="summary-details">
+                    <div class="summary-row">
+                        <span>جمع کل کالاها (4 عدد)</span>
+                        <span>2,810,000 تومان</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>تخفیف کالاها</span>
+                        <span>-350,000 تومان</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>هزینه ارسال</span>
+                        <span>رایگان</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>مبلغ قابل پرداخت</span>
+                        <span>2,460,000 تومان</span>
+                    </div>
+                </div>
+                
+                <div class="coupon-section">
+                    <h4>کد تخفیف دارید؟</h4>
+                    <div class="coupon-form">
+                        <input type="text" class="coupon-input" placeholder="کد تخفیف را وارد کنید">
+                        <button class="coupon-btn">اعمال</button>
+                    </div>
+                </div>
+                
+                <a href="#" class="checkout-btn">ادامه فرآیند خرید</a>
+                <a href="../product/prd.html" class="continue-shopping">ادامه خرید از فروشگاه</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- فوتر -->
+   <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>درباره ما</h3>
+                <p>فروشگاه چرم‌ ادیب با بیش از 7 سال سابقه در زمینه تولید و فروش محصولات چرمی باکیفیت، همواره تلاش کرده تا بهترین محصولات را با مناسب‌ترین قیمت‌ها به مشتریان ارائه دهد.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fa fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>لینک‌های مفید</h3>
+                <ul class="footer-links">
+                    <li><a href="../Home/homev1.html">صفحه اصلی</a></li>
+                    <li><a href="../sign in/sginin.html">ورود/ثبت نام</a></li>
+                    <li><a href="../product/prd.html">محصولات</a></li>
+                    <li><a href="../contact us/contact.html">درباره ما</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>دسته‌بندی محصولات</h3>
+                <ul class="footer-links">
+                    <li><a href="../product/prd.html">کیف‌های دستی</a></li>
+                    <li><a href="../product/prd.html">کفش چرمی</a></li>
+                    <li><a href="../product/prd.html">کیف های دوشی</a></li>
+                    <li><a href="../product/prd.html">اکسسوری</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>تماس با ما</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> ایران، تهران، شهر جدید پرند، شهرک افتاب، خیابان محلاتی، بلوک c.19.</li>
+                    <li><i class="fas fa-phone"></i> 021-56952048</li>
+                    <li><i class="fas fa-envelope"></i> adib_leather@gmail.com</li>
+                    <li><i class="fas fa-clock"></i> شنبه تا پنجشنبه: 9 صبح تا 8 شب</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2023 فروشگاه محصولات چرمی چرم ادیب. تمامی حقوق محفوظ است.
+        </div>
+    </footer>
+
+   
+    <script>
+        const userDropdownTrigger = document.getElementById('user-dropdown-trigger');
+        const userDropdown = document.getElementById('user-dropdown');
+        const cartDropdownTrigger = document.getElementById('cart-dropdown-trigger');
+        const cartDropdown = document.getElementById('cart-dropdown');
+
+        userDropdownTrigger.addEventListener('click', () => {
+            userDropdown.classList.toggle('active');
+            cartDropdown.classList.remove('active');
+        });
+
+        cartDropdownTrigger.addEventListener('click', () => {
+            cartDropdown.classList.toggle('active');
+            userDropdown.classList.remove('active');
+        });
+
+
+
+
+
+// مدیریت تعداد محصولات
+        document.querySelectorAll('.quantity-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const input = this.parentElement.querySelector('.quantity-input');
+                let value = parseInt(input.value);
+                
+                if (this.classList.contains('minus')) {
+                    if (value > 1) {
+                        input.value = value - 1;
+                    }
+                } else if (this.classList.contains('plus')) {
+                    input.value = value + 1;
+                }
+                
+                // در اینجا می‌توانید منطق به‌روزرسانی قیمت را اضافه کنید
+            });
+        });
+        
+        // مدیریت حذف محصولات
+        document.querySelectorAll('.remove-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const cartItem = this.closest('.cart-item');
+                cartItem.style.animation = 'fadeOut 0.5s forwards';
+                
+                setTimeout(() => {
+                    cartItem.remove();
+                    // به‌روزرسانی تعداد سبد خرید و مبالغ
+                }, 500);
+            });
+        });
+        
+        // افزودن انیمیشن‌های CSS
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes fadeOut {
+                from { opacity: 1; transform: translateY(0); }
+                to { opacity: 0; transform: translateY(-20px); height: 0; padding: 0; margin: 0; border: none; }
+            }
+        `;
+        document.head.appendChild(style);
+
+    </script>
+</body>
+</html>
